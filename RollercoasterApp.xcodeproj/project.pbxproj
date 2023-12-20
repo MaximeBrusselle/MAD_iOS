@@ -14,6 +14,15 @@
 		EF035C022B3375ED00D3E4BF /* RollercoasterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C012B3375ED00D3E4BF /* RollercoasterAppTests.swift */; };
 		EF035C0C2B3375ED00D3E4BF /* RollercoasterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C0B2B3375ED00D3E4BF /* RollercoasterAppUITests.swift */; };
 		EF035C0E2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C0D2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift */; };
+		EF035C1D2B337B8B00D3E4BF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EF035C1C2B337B8B00D3E4BF /* Alamofire */; };
+		EF035C242B337C3000D3E4BF /* CoasterDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C232B337C3000D3E4BF /* CoasterDetailsModel.swift */; };
+		EF035C282B3387AE00D3E4BF /* CoasterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C272B3387AE00D3E4BF /* CoasterDetailsViewModel.swift */; };
+		EF035C2C2B338D1700D3E4BF /* CoasterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C2B2B338D1700D3E4BF /* CoasterDetailsView.swift */; };
+		EF035C2F2B339DD000D3E4BF /* CoastersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C2E2B339DD000D3E4BF /* CoastersViewModel.swift */; };
+		EF035C312B339E1100D3E4BF /* CoastersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C302B339E1100D3E4BF /* CoastersView.swift */; };
+		EF035C332B339E5C00D3E4BF /* CoastersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C322B339E5C00D3E4BF /* CoastersModel.swift */; };
+		EF035C352B33A80C00D3E4BF /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF035C342B33A80C00D3E4BF /* keys.plist */; };
+		EF035C372B33A8D500D3E4BF /* PlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C362B33A8D500D3E4BF /* PlistReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +53,14 @@
 		EF035C072B3375ED00D3E4BF /* RollercoasterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollercoasterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF035C0B2B3375ED00D3E4BF /* RollercoasterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollercoasterAppUITests.swift; sourceTree = "<group>"; };
 		EF035C0D2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollercoasterAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EF035C232B337C3000D3E4BF /* CoasterDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoasterDetailsModel.swift; sourceTree = "<group>"; };
+		EF035C272B3387AE00D3E4BF /* CoasterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoasterDetailsViewModel.swift; sourceTree = "<group>"; };
+		EF035C2B2B338D1700D3E4BF /* CoasterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoasterDetailsView.swift; sourceTree = "<group>"; };
+		EF035C2E2B339DD000D3E4BF /* CoastersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastersViewModel.swift; sourceTree = "<group>"; };
+		EF035C302B339E1100D3E4BF /* CoastersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastersView.swift; sourceTree = "<group>"; };
+		EF035C322B339E5C00D3E4BF /* CoastersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastersModel.swift; sourceTree = "<group>"; };
+		EF035C342B33A80C00D3E4BF /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		EF035C362B33A8D500D3E4BF /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF035C1D2B337B8B00D3E4BF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +112,14 @@
 		EF035BEF2B3375EC00D3E4BF /* RollercoasterApp */ = {
 			isa = PBXGroup;
 			children = (
+				EF035C2D2B339DAF00D3E4BF /* Coasters */,
+				EF035C1E2B337BF500D3E4BF /* CoasterDetails */,
+				EF035C1A2B337A6E00D3E4BF /* Shared */,
 				EF035BF02B3375EC00D3E4BF /* RollercoasterAppApp.swift */,
 				EF035BF22B3375EC00D3E4BF /* ContentView.swift */,
 				EF035BF42B3375ED00D3E4BF /* Assets.xcassets */,
 				EF035BF62B3375ED00D3E4BF /* Preview Content */,
+				EF035C342B33A80C00D3E4BF /* keys.plist */,
 			);
 			path = RollercoasterApp;
 			sourceTree = "<group>";
@@ -127,6 +149,34 @@
 			path = RollercoasterAppUITests;
 			sourceTree = "<group>";
 		};
+		EF035C1A2B337A6E00D3E4BF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EF035C362B33A8D500D3E4BF /* PlistReader.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EF035C1E2B337BF500D3E4BF /* CoasterDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EF035C232B337C3000D3E4BF /* CoasterDetailsModel.swift */,
+				EF035C272B3387AE00D3E4BF /* CoasterDetailsViewModel.swift */,
+				EF035C2B2B338D1700D3E4BF /* CoasterDetailsView.swift */,
+			);
+			path = CoasterDetails;
+			sourceTree = "<group>";
+		};
+		EF035C2D2B339DAF00D3E4BF /* Coasters */ = {
+			isa = PBXGroup;
+			children = (
+				EF035C2E2B339DD000D3E4BF /* CoastersViewModel.swift */,
+				EF035C302B339E1100D3E4BF /* CoastersView.swift */,
+				EF035C322B339E5C00D3E4BF /* CoastersModel.swift */,
+			);
+			path = Coasters;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +193,9 @@
 			dependencies = (
 			);
 			name = RollercoasterApp;
+			packageProductDependencies = (
+				EF035C1C2B337B8B00D3E4BF /* Alamofire */,
+			);
 			productName = RollercoasterApp;
 			productReference = EF035BED2B3375EC00D3E4BF /* RollercoasterApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +268,9 @@
 				Base,
 			);
 			mainGroup = EF035BE42B3375EC00D3E4BF;
+			packageReferences = (
+				EF035C1B2B337B8B00D3E4BF /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = EF035BEE2B3375EC00D3E4BF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +289,7 @@
 			files = (
 				EF035BF82B3375ED00D3E4BF /* Preview Assets.xcassets in Resources */,
 				EF035BF52B3375ED00D3E4BF /* Assets.xcassets in Resources */,
+				EF035C352B33A80C00D3E4BF /* keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +314,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF035C312B339E1100D3E4BF /* CoastersView.swift in Sources */,
 				EF035BF32B3375EC00D3E4BF /* ContentView.swift in Sources */,
+				EF035C242B337C3000D3E4BF /* CoasterDetailsModel.swift in Sources */,
+				EF035C372B33A8D500D3E4BF /* PlistReader.swift in Sources */,
+				EF035C332B339E5C00D3E4BF /* CoastersModel.swift in Sources */,
+				EF035C2F2B339DD000D3E4BF /* CoastersViewModel.swift in Sources */,
+				EF035C2C2B338D1700D3E4BF /* CoasterDetailsView.swift in Sources */,
 				EF035BF12B3375EC00D3E4BF /* RollercoasterAppApp.swift in Sources */,
+				EF035C282B3387AE00D3E4BF /* CoasterDetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +652,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EF035C1B2B337B8B00D3E4BF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EF035C1C2B337B8B00D3E4BF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF035C1B2B337B8B00D3E4BF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF035BE52B3375EC00D3E4BF /* Project object */;
 }
