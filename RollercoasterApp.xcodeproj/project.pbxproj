@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF035BF12B3375EC00D3E4BF /* RollercoasterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035BF02B3375EC00D3E4BF /* RollercoasterAppApp.swift */; };
+		EF035BF32B3375EC00D3E4BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035BF22B3375EC00D3E4BF /* ContentView.swift */; };
+		EF035BF52B3375ED00D3E4BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF035BF42B3375ED00D3E4BF /* Assets.xcassets */; };
+		EF035BF82B3375ED00D3E4BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF035BF72B3375ED00D3E4BF /* Preview Assets.xcassets */; };
+		EF035C022B3375ED00D3E4BF /* RollercoasterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C012B3375ED00D3E4BF /* RollercoasterAppTests.swift */; };
+		EF035C0C2B3375ED00D3E4BF /* RollercoasterAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C0B2B3375ED00D3E4BF /* RollercoasterAppUITests.swift */; };
+		EF035C0E2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C0D2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF035BFE2B3375ED00D3E4BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF035BE52B3375EC00D3E4BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF035BEC2B3375EC00D3E4BF;
+			remoteInfo = RollercoasterApp;
+		};
+		EF035C082B3375ED00D3E4BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF035BE52B3375EC00D3E4BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF035BEC2B3375EC00D3E4BF;
+			remoteInfo = RollercoasterApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EF035BED2B3375EC00D3E4BF /* RollercoasterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollercoasterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF035BF02B3375EC00D3E4BF /* RollercoasterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollercoasterAppApp.swift; sourceTree = "<group>"; };
+		EF035BF22B3375EC00D3E4BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EF035BF42B3375ED00D3E4BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF035BF72B3375ED00D3E4BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EF035BFD2B3375ED00D3E4BF /* RollercoasterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollercoasterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF035C012B3375ED00D3E4BF /* RollercoasterAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollercoasterAppTests.swift; sourceTree = "<group>"; };
+		EF035C072B3375ED00D3E4BF /* RollercoasterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollercoasterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF035C0B2B3375ED00D3E4BF /* RollercoasterAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollercoasterAppUITests.swift; sourceTree = "<group>"; };
+		EF035C0D2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollercoasterAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF035BEA2B3375EC00D3E4BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF035BFA2B3375ED00D3E4BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF035C042B3375ED00D3E4BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF035BE42B3375EC00D3E4BF = {
+			isa = PBXGroup;
+			children = (
+				EF035BEF2B3375EC00D3E4BF /* RollercoasterApp */,
+				EF035C002B3375ED00D3E4BF /* RollercoasterAppTests */,
+				EF035C0A2B3375ED00D3E4BF /* RollercoasterAppUITests */,
+				EF035BEE2B3375EC00D3E4BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF035BEE2B3375EC00D3E4BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF035BED2B3375EC00D3E4BF /* RollercoasterApp.app */,
+				EF035BFD2B3375ED00D3E4BF /* RollercoasterAppTests.xctest */,
+				EF035C072B3375ED00D3E4BF /* RollercoasterAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF035BEF2B3375EC00D3E4BF /* RollercoasterApp */ = {
+			isa = PBXGroup;
+			children = (
+				EF035BF02B3375EC00D3E4BF /* RollercoasterAppApp.swift */,
+				EF035BF22B3375EC00D3E4BF /* ContentView.swift */,
+				EF035BF42B3375ED00D3E4BF /* Assets.xcassets */,
+				EF035BF62B3375ED00D3E4BF /* Preview Content */,
+			);
+			path = RollercoasterApp;
+			sourceTree = "<group>";
+		};
+		EF035BF62B3375ED00D3E4BF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EF035BF72B3375ED00D3E4BF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EF035C002B3375ED00D3E4BF /* RollercoasterAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF035C012B3375ED00D3E4BF /* RollercoasterAppTests.swift */,
+			);
+			path = RollercoasterAppTests;
+			sourceTree = "<group>";
+		};
+		EF035C0A2B3375ED00D3E4BF /* RollercoasterAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EF035C0B2B3375ED00D3E4BF /* RollercoasterAppUITests.swift */,
+				EF035C0D2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift */,
+			);
+			path = RollercoasterAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF035BEC2B3375EC00D3E4BF /* RollercoasterApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF035C112B3375ED00D3E4BF /* Build configuration list for PBXNativeTarget "RollercoasterApp" */;
+			buildPhases = (
+				EF035BE92B3375EC00D3E4BF /* Sources */,
+				EF035BEA2B3375EC00D3E4BF /* Frameworks */,
+				EF035BEB2B3375EC00D3E4BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RollercoasterApp;
+			productName = RollercoasterApp;
+			productReference = EF035BED2B3375EC00D3E4BF /* RollercoasterApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF035BFC2B3375ED00D3E4BF /* RollercoasterAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF035C142B3375ED00D3E4BF /* Build configuration list for PBXNativeTarget "RollercoasterAppTests" */;
+			buildPhases = (
+				EF035BF92B3375ED00D3E4BF /* Sources */,
+				EF035BFA2B3375ED00D3E4BF /* Frameworks */,
+				EF035BFB2B3375ED00D3E4BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF035BFF2B3375ED00D3E4BF /* PBXTargetDependency */,
+			);
+			name = RollercoasterAppTests;
+			productName = RollercoasterAppTests;
+			productReference = EF035BFD2B3375ED00D3E4BF /* RollercoasterAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EF035C062B3375ED00D3E4BF /* RollercoasterAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF035C172B3375ED00D3E4BF /* Build configuration list for PBXNativeTarget "RollercoasterAppUITests" */;
+			buildPhases = (
+				EF035C032B3375ED00D3E4BF /* Sources */,
+				EF035C042B3375ED00D3E4BF /* Frameworks */,
+				EF035C052B3375ED00D3E4BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF035C092B3375ED00D3E4BF /* PBXTargetDependency */,
+			);
+			name = RollercoasterAppUITests;
+			productName = RollercoasterAppUITests;
+			productReference = EF035C072B3375ED00D3E4BF /* RollercoasterAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF035BE52B3375EC00D3E4BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					EF035BEC2B3375EC00D3E4BF = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					EF035BFC2B3375ED00D3E4BF = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = EF035BEC2B3375EC00D3E4BF;
+					};
+					EF035C062B3375ED00D3E4BF = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = EF035BEC2B3375EC00D3E4BF;
+					};
+				};
+			};
+			buildConfigurationList = EF035BE82B3375EC00D3E4BF /* Build configuration list for PBXProject "RollercoasterApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF035BE42B3375EC00D3E4BF;
+			productRefGroup = EF035BEE2B3375EC00D3E4BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF035BEC2B3375EC00D3E4BF /* RollercoasterApp */,
+				EF035BFC2B3375ED00D3E4BF /* RollercoasterAppTests */,
+				EF035C062B3375ED00D3E4BF /* RollercoasterAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF035BEB2B3375EC00D3E4BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF035BF82B3375ED00D3E4BF /* Preview Assets.xcassets in Resources */,
+				EF035BF52B3375ED00D3E4BF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF035BFB2B3375ED00D3E4BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF035C052B3375ED00D3E4BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF035BE92B3375EC00D3E4BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF035BF32B3375EC00D3E4BF /* ContentView.swift in Sources */,
+				EF035BF12B3375EC00D3E4BF /* RollercoasterAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF035BF92B3375ED00D3E4BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF035C022B3375ED00D3E4BF /* RollercoasterAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF035C032B3375ED00D3E4BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF035C0E2B3375ED00D3E4BF /* RollercoasterAppUITestsLaunchTests.swift in Sources */,
+				EF035C0C2B3375ED00D3E4BF /* RollercoasterAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF035BFF2B3375ED00D3E4BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF035BEC2B3375EC00D3E4BF /* RollercoasterApp */;
+			targetProxy = EF035BFE2B3375ED00D3E4BF /* PBXContainerItemProxy */;
+		};
+		EF035C092B3375ED00D3E4BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF035BEC2B3375EC00D3E4BF /* RollercoasterApp */;
+			targetProxy = EF035C082B3375ED00D3E4BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EF035C0F2B3375ED00D3E4BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF035C102B3375ED00D3E4BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF035C122B3375ED00D3E4BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RollercoasterApp/Preview Content\"";
+				DEVELOPMENT_TEAM = C432U23763;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximebrusselle.RollercoasterApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF035C132B3375ED00D3E4BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RollercoasterApp/Preview Content\"";
+				DEVELOPMENT_TEAM = C432U23763;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximebrusselle.RollercoasterApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EF035C152B3375ED00D3E4BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C432U23763;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximebrusselle.RollercoasterAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RollercoasterApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RollercoasterApp";
+			};
+			name = Debug;
+		};
+		EF035C162B3375ED00D3E4BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C432U23763;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximebrusselle.RollercoasterAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RollercoasterApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RollercoasterApp";
+			};
+			name = Release;
+		};
+		EF035C182B3375ED00D3E4BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C432U23763;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximebrusselle.RollercoasterAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RollercoasterApp;
+			};
+			name = Debug;
+		};
+		EF035C192B3375ED00D3E4BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C432U23763;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximebrusselle.RollercoasterAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RollercoasterApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF035BE82B3375EC00D3E4BF /* Build configuration list for PBXProject "RollercoasterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF035C0F2B3375ED00D3E4BF /* Debug */,
+				EF035C102B3375ED00D3E4BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF035C112B3375ED00D3E4BF /* Build configuration list for PBXNativeTarget "RollercoasterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF035C122B3375ED00D3E4BF /* Debug */,
+				EF035C132B3375ED00D3E4BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF035C142B3375ED00D3E4BF /* Build configuration list for PBXNativeTarget "RollercoasterAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF035C152B3375ED00D3E4BF /* Debug */,
+				EF035C162B3375ED00D3E4BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF035C172B3375ED00D3E4BF /* Build configuration list for PBXNativeTarget "RollercoasterAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF035C182B3375ED00D3E4BF /* Debug */,
+				EF035C192B3375ED00D3E4BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EF035BE52B3375EC00D3E4BF /* Project object */;
+}
