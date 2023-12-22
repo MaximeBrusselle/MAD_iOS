@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var vm = MainViewModel()
+    
     var body: some View {
         if vm.isSignedIn, !vm.currentUserId.isEmpty {
             TabView {
-                CoastersView()
+                CoastersView(userId: vm.currentUserId)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }

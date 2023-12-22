@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct CoastersView: View {
+    private let userId: String
     @StateObject private var vm = CoastersViewModel()
+    
+    init(userId: String) {
+        self.userId = userId
+    }
     
     var body: some View {
         NavigationView {
@@ -19,15 +24,13 @@ struct CoastersView: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 14){
                             ForEach(vm.repo.hydraMember, id: \.id) { coaster in
-                                VStack(spacing: 14) {
-                                    Text(coaster.name)
-                                }
+                                CoasterItemView(coaster: coaster)
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("Home")
+            .navigationTitle("Coasters")
         }
 
         
@@ -37,6 +40,6 @@ struct CoastersView: View {
 
 struct Coasters_Preview: PreviewProvider {
     static var previews: some View {
-        CoastersView()
+        CoastersView(userId: "yJp8qLL65QV02RgEzfm794bX21V2")
     }
 }
