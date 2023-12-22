@@ -90,5 +90,6 @@ fastlane/test_output
 iOSInjectionProject/
 
 # hide keys
-.plist
+*.plist
+GoogleService-Info.plist
 keys.plist

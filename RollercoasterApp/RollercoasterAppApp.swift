@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct RollercoasterAppApp: App {
-    @StateObject var model = CoasterDetailsViewModel(id: 1)
+    init() {
+        FirebaseApp.configure()
+    }
+    @StateObject var detailmodel = CoasterDetailsViewModel(id: 1)
+    @StateObject var listmodel = CoastersViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

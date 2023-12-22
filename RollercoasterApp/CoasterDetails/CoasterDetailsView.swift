@@ -22,7 +22,7 @@ struct CoasterDetailsView: View {
 
 struct CoasterDetailsView_Preview: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CoasterDetailsView()
     }
 }
 

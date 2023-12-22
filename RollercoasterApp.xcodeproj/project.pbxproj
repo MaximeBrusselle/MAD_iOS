@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF035BF12B3375EC00D3E4BF /* RollercoasterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035BF02B3375EC00D3E4BF /* RollercoasterAppApp.swift */; };
-		EF035BF32B3375EC00D3E4BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035BF22B3375EC00D3E4BF /* ContentView.swift */; };
+		EF035BF32B3375EC00D3E4BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035BF22B3375EC00D3E4BF /* MainView.swift */; };
 		EF035BF52B3375ED00D3E4BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF035BF42B3375ED00D3E4BF /* Assets.xcassets */; };
 		EF035BF82B3375ED00D3E4BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF035BF72B3375ED00D3E4BF /* Preview Assets.xcassets */; };
 		EF035C022B3375ED00D3E4BF /* RollercoasterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C012B3375ED00D3E4BF /* RollercoasterAppTests.swift */; };
@@ -23,6 +23,20 @@
 		EF035C332B339E5C00D3E4BF /* CoastersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C322B339E5C00D3E4BF /* CoastersModel.swift */; };
 		EF035C352B33A80C00D3E4BF /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF035C342B33A80C00D3E4BF /* keys.plist */; };
 		EF035C372B33A8D500D3E4BF /* PlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C362B33A8D500D3E4BF /* PlistReader.swift */; };
+		EF9A84212B35DAC00069A413 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF9A84202B35DAC00069A413 /* GoogleService-Info.plist */; };
+		EF9A84242B35DB7D0069A413 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EF9A84232B35DB7D0069A413 /* FirebaseAuth */; };
+		EF9A84262B35DB7D0069A413 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EF9A84252B35DB7D0069A413 /* FirebaseFirestore */; };
+		EF9A84282B35DB7D0069A413 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF9A84272B35DB7D0069A413 /* FirebaseFirestoreSwift */; };
+		EF9A842B2B35E1240069A413 /* CoasterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A842A2B35E1240069A413 /* CoasterItemView.swift */; };
+		EF9A842E2B35E2770069A413 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A842D2B35E2770069A413 /* UserModel.swift */; };
+		EF9A84302B35E2BE0069A413 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A842F2B35E2BE0069A413 /* LoginView.swift */; };
+		EF9A84322B35E5340069A413 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A84312B35E5340069A413 /* HeaderView.swift */; };
+		EF9A84342B35E7EF0069A413 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A84332B35E7EF0069A413 /* RegisterView.swift */; };
+		EF9A84362B35EB8E0069A413 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A84352B35EB8E0069A413 /* AccountButton.swift */; };
+		EF9A843B2B35EDA60069A413 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A843A2B35EDA60069A413 /* LoginViewModel.swift */; };
+		EF9A843D2B35EE5E0069A413 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A843C2B35EE5E0069A413 /* RegisterViewModel.swift */; };
+		EF9A843F2B35F5A30069A413 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A843E2B35F5A30069A413 /* MainViewModel.swift */; };
+		EF9A84412B35FAE70069A413 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9A84402B35FAE70069A413 /* ProfileView.swift */; };
 		EFE21A022B34D9D200650D49 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE21A012B34D9D200650D49 /* ImageViewModel.swift */; };
 		EFE21A052B34DAEB00650D49 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE21A042B34DAEB00650D49 /* ImageModel.swift */; };
 		EFE21A072B34DC2A00650D49 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE21A062B34DC2A00650D49 /* ImageView.swift */; };
@@ -48,7 +62,7 @@
 /* Begin PBXFileReference section */
 		EF035BED2B3375EC00D3E4BF /* RollercoasterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollercoasterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF035BF02B3375EC00D3E4BF /* RollercoasterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollercoasterAppApp.swift; sourceTree = "<group>"; };
-		EF035BF22B3375EC00D3E4BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EF035BF22B3375EC00D3E4BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EF035BF42B3375ED00D3E4BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF035BF72B3375ED00D3E4BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EF035BFD2B3375ED00D3E4BF /* RollercoasterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollercoasterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +78,17 @@
 		EF035C322B339E5C00D3E4BF /* CoastersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastersModel.swift; sourceTree = "<group>"; };
 		EF035C342B33A80C00D3E4BF /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		EF035C362B33A8D500D3E4BF /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
+		EF9A84202B35DAC00069A413 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF9A842A2B35E1240069A413 /* CoasterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoasterItemView.swift; sourceTree = "<group>"; };
+		EF9A842D2B35E2770069A413 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		EF9A842F2B35E2BE0069A413 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EF9A84312B35E5340069A413 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		EF9A84332B35E7EF0069A413 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		EF9A84352B35EB8E0069A413 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
+		EF9A843A2B35EDA60069A413 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EF9A843C2B35EE5E0069A413 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		EF9A843E2B35F5A30069A413 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		EF9A84402B35FAE70069A413 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		EFE21A012B34D9D200650D49 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		EFE21A042B34DAEB00650D49 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		EFE21A062B34DC2A00650D49 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -75,6 +100,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF035C1D2B337B8B00D3E4BF /* Alamofire in Frameworks */,
+				EF9A84242B35DB7D0069A413 /* FirebaseAuth in Frameworks */,
+				EF9A84262B35DB7D0069A413 /* FirebaseFirestore in Frameworks */,
+				EF9A84282B35DB7D0069A413 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,14 +146,16 @@
 		EF035BEF2B3375EC00D3E4BF /* RollercoasterApp */ = {
 			isa = PBXGroup;
 			children = (
+				EF035BF62B3375ED00D3E4BF /* Preview Content */,
+				EF035BF42B3375ED00D3E4BF /* Assets.xcassets */,
+				EF9A842C2B35E2690069A413 /* Profile */,
+				EF9A84292B35E0030069A413 /* Other */,
 				EF035C2D2B339DAF00D3E4BF /* Coasters */,
 				EF035C1E2B337BF500D3E4BF /* CoasterDetails */,
 				EF035C1A2B337A6E00D3E4BF /* Shared */,
 				EF035BF02B3375EC00D3E4BF /* RollercoasterAppApp.swift */,
-				EF035BF22B3375EC00D3E4BF /* ContentView.swift */,
-				EF035BF42B3375ED00D3E4BF /* Assets.xcassets */,
-				EF035BF62B3375ED00D3E4BF /* Preview Content */,
-				EF035C342B33A80C00D3E4BF /* keys.plist */,
+				EF035BF22B3375EC00D3E4BF /* MainView.swift */,
+				EF9A843E2B35F5A30069A413 /* MainViewModel.swift */,
 			);
 			path = RollercoasterApp;
 			sourceTree = "<group>";
@@ -180,8 +210,65 @@
 				EF035C2E2B339DD000D3E4BF /* CoastersViewModel.swift */,
 				EF035C302B339E1100D3E4BF /* CoastersView.swift */,
 				EF035C322B339E5C00D3E4BF /* CoastersModel.swift */,
+				EF9A842A2B35E1240069A413 /* CoasterItemView.swift */,
 			);
 			path = Coasters;
+			sourceTree = "<group>";
+		};
+		EF9A84292B35E0030069A413 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				EF035C342B33A80C00D3E4BF /* keys.plist */,
+				EF9A84202B35DAC00069A413 /* GoogleService-Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		EF9A842C2B35E2690069A413 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EF9A84422B35FAEB0069A413 /* ProfilePage */,
+				EF9A84392B35ED770069A413 /* Shared */,
+				EF9A84382B35ED6F0069A413 /* Register */,
+				EF9A84372B35ED6A0069A413 /* Login */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EF9A84372B35ED6A0069A413 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EF9A842F2B35E2BE0069A413 /* LoginView.swift */,
+				EF9A843A2B35EDA60069A413 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EF9A84382B35ED6F0069A413 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				EF9A84332B35E7EF0069A413 /* RegisterView.swift */,
+				EF9A843C2B35EE5E0069A413 /* RegisterViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		EF9A84392B35ED770069A413 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EF9A84312B35E5340069A413 /* HeaderView.swift */,
+				EF9A842D2B35E2770069A413 /* UserModel.swift */,
+				EF9A84352B35EB8E0069A413 /* AccountButton.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EF9A84422B35FAEB0069A413 /* ProfilePage */ = {
+			isa = PBXGroup;
+			children = (
+				EF9A84402B35FAE70069A413 /* ProfileView.swift */,
+			);
+			path = ProfilePage;
 			sourceTree = "<group>";
 		};
 		EFE21A032B34DAD900650D49 /* Images */ = {
@@ -212,6 +299,9 @@
 			name = RollercoasterApp;
 			packageProductDependencies = (
 				EF035C1C2B337B8B00D3E4BF /* Alamofire */,
+				EF9A84232B35DB7D0069A413 /* FirebaseAuth */,
+				EF9A84252B35DB7D0069A413 /* FirebaseFirestore */,
+				EF9A84272B35DB7D0069A413 /* FirebaseFirestoreSwift */,
 			);
 			productName = RollercoasterApp;
 			productReference = EF035BED2B3375EC00D3E4BF /* RollercoasterApp.app */;
@@ -287,6 +377,7 @@
 			mainGroup = EF035BE42B3375EC00D3E4BF;
 			packageReferences = (
 				EF035C1B2B337B8B00D3E4BF /* XCRemoteSwiftPackageReference "Alamofire" */,
+				EF9A84222B35DB7D0069A413 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EF035BEE2B3375EC00D3E4BF /* Products */;
 			projectDirPath = "";
@@ -305,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF035BF82B3375ED00D3E4BF /* Preview Assets.xcassets in Resources */,
+				EF9A84212B35DAC00069A413 /* GoogleService-Info.plist in Resources */,
 				EF035BF52B3375ED00D3E4BF /* Assets.xcassets in Resources */,
 				EF035C352B33A80C00D3E4BF /* keys.plist in Resources */,
 			);
@@ -334,15 +426,25 @@
 				EFE21A072B34DC2A00650D49 /* ImageView.swift in Sources */,
 				EFE21A052B34DAEB00650D49 /* ImageModel.swift in Sources */,
 				EF035C312B339E1100D3E4BF /* CoastersView.swift in Sources */,
-				EF035BF32B3375EC00D3E4BF /* ContentView.swift in Sources */,
+				EF9A84302B35E2BE0069A413 /* LoginView.swift in Sources */,
+				EF035BF32B3375EC00D3E4BF /* MainView.swift in Sources */,
 				EF035C242B337C3000D3E4BF /* CoasterDetailsModel.swift in Sources */,
 				EF035C372B33A8D500D3E4BF /* PlistReader.swift in Sources */,
+				EF9A842B2B35E1240069A413 /* CoasterItemView.swift in Sources */,
+				EF9A84342B35E7EF0069A413 /* RegisterView.swift in Sources */,
 				EF035C332B339E5C00D3E4BF /* CoastersModel.swift in Sources */,
+				EF9A842E2B35E2770069A413 /* UserModel.swift in Sources */,
+				EF9A843D2B35EE5E0069A413 /* RegisterViewModel.swift in Sources */,
+				EF9A84362B35EB8E0069A413 /* AccountButton.swift in Sources */,
 				EF035C2F2B339DD000D3E4BF /* CoastersViewModel.swift in Sources */,
+				EF9A843F2B35F5A30069A413 /* MainViewModel.swift in Sources */,
 				EFE21A022B34D9D200650D49 /* ImageViewModel.swift in Sources */,
 				EF035C2C2B338D1700D3E4BF /* CoasterDetailsView.swift in Sources */,
 				EF035BF12B3375EC00D3E4BF /* RollercoasterAppApp.swift in Sources */,
 				EF035C282B3387AE00D3E4BF /* CoasterDetailsViewModel.swift in Sources */,
+				EF9A843B2B35EDA60069A413 /* LoginViewModel.swift in Sources */,
+				EF9A84412B35FAE70069A413 /* ProfileView.swift in Sources */,
+				EF9A84322B35E5340069A413 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +611,7 @@
 				DEVELOPMENT_TEAM = C432U23763;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = RollercoasterApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -538,6 +641,7 @@
 				DEVELOPMENT_TEAM = C432U23763;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = RollercoasterApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -682,6 +786,14 @@
 				minimumVersion = 5.8.1;
 			};
 		};
+		EF9A84222B35DB7D0069A413 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -689,6 +801,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF035C1B2B337B8B00D3E4BF /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		EF9A84232B35DB7D0069A413 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF9A84222B35DB7D0069A413 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EF9A84252B35DB7D0069A413 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF9A84222B35DB7D0069A413 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EF9A84272B35DB7D0069A413 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF9A84222B35DB7D0069A413 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

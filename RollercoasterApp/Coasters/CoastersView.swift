@@ -11,20 +11,32 @@ struct CoastersView: View {
     @StateObject private var vm = CoastersViewModel()
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 14){
-                ForEach(vm.repo.hydraMember, id: \.id) { coaster in
-                    VStack(spacing: 14) {
-                        Text(coaster.name)
+        NavigationView {
+            VStack {
+                if vm.repo.hydraMember.isEmpty {
+                    Text("Something went wrong")
+                } else {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 14){
+                            ForEach(vm.repo.hydraMember, id: \.id) { coaster in
+                                VStack(spacing: 14) {
+                                    Text(coaster.name)
+                                }
+                            }
+                        }
                     }
                 }
             }
+            .navigationTitle("Home")
         }
+
+        
+       
     }
 }
 
 struct Coasters_Preview: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CoastersView()
     }
 }
