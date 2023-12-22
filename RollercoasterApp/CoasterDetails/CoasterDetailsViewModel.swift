@@ -30,7 +30,7 @@ class CoasterDetailsViewModel: ObservableObject {
             return
         }
         
-        AF.request(url, method: .get, headers: headers).responseJSON { response in
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: CoasterDetail.self) { response in
             if(response.response?.statusCode == 404){
                 print("404")
                 return

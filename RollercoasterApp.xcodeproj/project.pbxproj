@@ -23,6 +23,9 @@
 		EF035C332B339E5C00D3E4BF /* CoastersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C322B339E5C00D3E4BF /* CoastersModel.swift */; };
 		EF035C352B33A80C00D3E4BF /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF035C342B33A80C00D3E4BF /* keys.plist */; };
 		EF035C372B33A8D500D3E4BF /* PlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF035C362B33A8D500D3E4BF /* PlistReader.swift */; };
+		EFE21A022B34D9D200650D49 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE21A012B34D9D200650D49 /* ImageViewModel.swift */; };
+		EFE21A052B34DAEB00650D49 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE21A042B34DAEB00650D49 /* ImageModel.swift */; };
+		EFE21A072B34DC2A00650D49 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE21A062B34DC2A00650D49 /* ImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		EF035C322B339E5C00D3E4BF /* CoastersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastersModel.swift; sourceTree = "<group>"; };
 		EF035C342B33A80C00D3E4BF /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		EF035C362B33A8D500D3E4BF /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
+		EFE21A012B34D9D200650D49 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
+		EFE21A042B34DAEB00650D49 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		EFE21A062B34DC2A00650D49 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,7 @@
 		EF035C1A2B337A6E00D3E4BF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EFE21A032B34DAD900650D49 /* Images */,
 				EF035C362B33A8D500D3E4BF /* PlistReader.swift */,
 			);
 			path = Shared;
@@ -175,6 +182,16 @@
 				EF035C322B339E5C00D3E4BF /* CoastersModel.swift */,
 			);
 			path = Coasters;
+			sourceTree = "<group>";
+		};
+		EFE21A032B34DAD900650D49 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EFE21A012B34D9D200650D49 /* ImageViewModel.swift */,
+				EFE21A042B34DAEB00650D49 /* ImageModel.swift */,
+				EFE21A062B34DC2A00650D49 /* ImageView.swift */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,12 +331,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFE21A072B34DC2A00650D49 /* ImageView.swift in Sources */,
+				EFE21A052B34DAEB00650D49 /* ImageModel.swift in Sources */,
 				EF035C312B339E1100D3E4BF /* CoastersView.swift in Sources */,
 				EF035BF32B3375EC00D3E4BF /* ContentView.swift in Sources */,
 				EF035C242B337C3000D3E4BF /* CoasterDetailsModel.swift in Sources */,
 				EF035C372B33A8D500D3E4BF /* PlistReader.swift in Sources */,
 				EF035C332B339E5C00D3E4BF /* CoastersModel.swift in Sources */,
 				EF035C2F2B339DD000D3E4BF /* CoastersViewModel.swift in Sources */,
+				EFE21A022B34D9D200650D49 /* ImageViewModel.swift in Sources */,
 				EF035C2C2B338D1700D3E4BF /* CoasterDetailsView.swift in Sources */,
 				EF035BF12B3375EC00D3E4BF /* RollercoasterAppApp.swift in Sources */,
 				EF035C282B3387AE00D3E4BF /* CoasterDetailsViewModel.swift in Sources */,
