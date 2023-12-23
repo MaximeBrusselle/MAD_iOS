@@ -15,27 +15,9 @@ class CoasterDetailsViewModel: ObservableObject {
     @Published var coaster = CoasterDetail()
     @Published var doneFetching = false
     @Published var errorMessage = ""
-    @Published var liked = false
     
     init(id: Int){
         self.id = id
-    }
-    
-    func checkIfCoasterLiked() {
-        guard let uId = Auth.auth().currentUser?.uid else {
-            return
-        }
-        
-        let db = Firestore.firestore()
-        db.collection("users")
-            .document(uId)
-            .collection("coasters")
-            .document("\(id)")
-            .getDocument { document, error in
-                if document?.exists ?? false {
-                    self.liked = true
-                }
-            }
     }
 
     
@@ -94,17 +76,17 @@ class CoasterDetailsViewModel: ObservableObject {
         task.resume()
     }
     
-    func toggleLike() {
+    func toggleLike(liked: Bool) -> Bool {
         // Get current user
         guard let uId = Auth.auth().currentUser?.uid else {
-            return
+            return liked
         }
         
         // Save model
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(uId)
         
-        if self.liked {
+        if liked {
             userRef.collection("coasters")
                 .document("\(id)")
                 .delete()
@@ -119,6 +101,6 @@ class CoasterDetailsViewModel: ObservableObject {
                 "coastersRidden": FieldValue.increment(1.0)
             ])
         }
-        self.liked = !liked
+        return !liked
     }
 }

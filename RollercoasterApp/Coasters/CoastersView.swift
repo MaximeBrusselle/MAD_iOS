@@ -24,9 +24,7 @@ struct CoastersView: View {
                     VStack {
                         List {
                             ForEach(vm.repo.items, id: \.id) { coaster in
-                                NavigationLink(destination: CoasterDetailsView(id: coaster.id)) {
-                                    CoasterItemView(coaster: coaster)
-                                }
+                                CoasterItemView(coaster: coaster)
                             }
                         }
                         .listStyle(PlainListStyle())
