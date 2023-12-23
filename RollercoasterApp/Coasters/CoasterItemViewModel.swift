@@ -12,57 +12,27 @@ import SwiftUI
 
 class CoasterItemViewModel: ObservableObject {
     let coaster: Coaster
-    @Published var likeId = ""
+    @Published var liked = false
     
     init (coaster: Coaster) {
         self.coaster = coaster
+        checkIfCoasterLiked()
     }
     
-    func like() {
-        
-        // Get current user
+    func checkIfCoasterLiked() {
         guard let uId = Auth.auth().currentUser?.uid else {
             return
         }
         
-        // Create model
-        let newItem = coaster
-        
-        // Save model
         let db = Firestore.firestore()
-        let ref = db.collection("users").document(uId)
-        
-        ref.collection("coasters")
+        db.collection("users")
+            .document(uId)
+            .collection("coasters")
             .document("\(coaster.id)")
-            .setData(newItem.asDictionary())
-        
-        ref.updateData([
-            "coastersRidden": FieldValue.increment(1.0)
-        ])
-        
-        likeId = "\(coaster.id)"
-    }
-    
-    func removelike() {
-        guard let uId = Auth.auth().currentUser?.uid else {
-            return
-        }
-        
-        guard !likeId.isEmpty else {
-            return
-        }
-        
-        let db = Firestore.firestore()
-        let ref = db.collection("users").document(uId)
-        
-        ref.collection("coasters")
-            .document(likeId)
-            .delete()
-        
-        ref.updateData([
-            "coastersRidden": FieldValue.increment(-1.0)
-        ])
-        
-        likeId = ""
+            .getDocument { document, error in
+                if document?.exists ?? false {
+                    self.liked = true
+                }
+            }
     }
 }

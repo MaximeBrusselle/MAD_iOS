@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Coaster: Codable {
+struct Coaster: Codable, Identifiable {
     var id: Int
     var name: String
     var park: CoastersPark
@@ -24,9 +24,24 @@ struct CoastersStatus: Codable {
 }
 
 struct CoastersRepo: Codable {
-    var hydraMember: [Coaster]
+    var items: [Coaster]
 
     enum CodingKeys: String, CodingKey {
-        case hydraMember = "hydra:member"
+        case items = "hydra:member"
+    }
+}
+
+extension Coaster {
+    func cleanedUpStatusString() -> String {
+        let components = self.status.name
+            .replacingOccurrences(of: "status.", with: "")
+            .components(separatedBy: ".")
+
+        let cleanedString = components
+            .enumerated()
+            .map { $0.offset == 0 ? $0.element.capitalized : $0.element }
+            .joined(separator: " ")
+
+        return cleanedString
     }
 }

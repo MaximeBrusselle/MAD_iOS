@@ -6,45 +6,119 @@
 //
 
 import Foundation
-import Alamofire
+import FirebaseAuth
+import FirebaseFirestore
 import Combine
 
 class CoasterDetailsViewModel: ObservableObject {
-    var id: Int
+    let id: Int
+    @Published var coaster = CoasterDetail()
+    @Published var doneFetching = false
+    @Published var errorMessage = ""
+    @Published var liked = false
+    
     init(id: Int){
         self.id = id
-        fetchCoasters(id)
     }
-    @Published var coaster = CoasterDetail()
     
-    func fetchCoasters(_ id: Int){
-        let apiKey = PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")
-        if apiKey == nil {
-            return
-        }
-        let url = "https://www.captaincoaster.com/api/coasters/\(self.id)"
-        let headers: HTTPHeaders = [
-            "Authorization": apiKey!
-        ]
-        guard let url = URL(string: url) else {
+    func checkIfCoasterLiked() {
+        guard let uId = Auth.auth().currentUser?.uid else {
             return
         }
         
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: CoasterDetail.self) { response in
-            if(response.response?.statusCode == 404){
-                print("404")
-                return
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(uId)
+            .collection("coasters")
+            .document("\(id)")
+            .getDocument { document, error in
+                if document?.exists ?? false {
+                    self.liked = true
+                }
             }
-            guard let data = response.data else {
-                return
-            }
-            
-            do {
-                let res = try JSONDecoder().decode(CoasterDetail.self, from: data)
-                self.coaster = res
-            } catch {
-                print(error)
+    }
+
+    
+    func fetchCoaster() {
+        let url = URL(string: "https://captaincoaster.com/api/coasters/\(self.id)")!
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/ld+json", forHTTPHeaderField: "accept")
+        request.addValue(PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")!, forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+
+            if error != nil {
+                self.errorMessage = error!.localizedDescription
+            } else if let response = response as? HTTPURLResponse {
+                switch response.statusCode {
+                case 200:
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                        let coasterDetail = try decoder.decode(CoasterDetail.self, from: data!)
+                        
+                        DispatchQueue.main.async {
+                            self.coaster = coasterDetail
+                            self.doneFetching = true
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            self.errorMessage = "Error decoding JSON: \(error.localizedDescription)"
+                            self.doneFetching = true
+                        }
+
+                    }
+                case 401:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Authorization issue (401)"
+                        self.doneFetching = true
+                    }
+                case 404:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Resource not found (404)"
+                        self.doneFetching = true
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Unexpected response: \(response.statusCode)"
+                        self.doneFetching = true
+                    }
+                }
             }
         }
+
+        task.resume()
+    }
+    
+    func toggleLike() {
+        // Get current user
+        guard let uId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        // Save model
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(uId)
+        
+        if self.liked {
+            userRef.collection("coasters")
+                .document("\(id)")
+                .delete()
+            userRef.updateData([
+                "coastersRidden": FieldValue.increment(-1.0)
+            ])
+        } else {
+            userRef.collection("coasters")
+                .document("\(id)")
+                .setData(coaster.asDictionary())
+            userRef.updateData([
+                "coastersRidden": FieldValue.increment(1.0)
+            ])
+        }
+        self.liked = !liked
     }
 }

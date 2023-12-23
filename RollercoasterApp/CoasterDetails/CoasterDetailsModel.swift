@@ -27,42 +27,42 @@ struct CoasterDetail: Codable {
 }
 
 struct CoasterDetailMaterialType: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailSeatingType: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailModel: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailManufacturer: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailRestraintType: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailLaunch: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailPark: Codable {
-    var name: String
-    var country: CoasterDetailCountry
+    var name: String?
+    var country: CoasterDetailCountry?
 }
 
 struct CoasterDetailCountry: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailStatus: Codable {
-    var name: String
+    var name: String?
 }
 
 struct CoasterDetailImage: Codable {
-    var path: String
+    var path: String?
 }

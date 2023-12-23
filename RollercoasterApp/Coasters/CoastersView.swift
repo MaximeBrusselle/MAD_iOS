@@ -9,37 +9,43 @@ import SwiftUI
 
 struct CoastersView: View {
     private let userId: String
-    @StateObject private var vm = CoastersViewModel()
+    @ObservedObject var vm: CoastersViewModel
     
     init(userId: String) {
         self.userId = userId
+        self.vm = CoastersViewModel()
+        vm.fetchCoasters(page: 7)
     }
     
     var body: some View {
         NavigationView {
-            VStack {
-                if vm.repo.hydraMember.isEmpty {
-                    Text("Something went wrong")
-                } else {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: 14){
-                            ForEach(vm.repo.hydraMember, id: \.id) { coaster in
-                                CoasterItemView(coaster: coaster)
+            if vm.doneFetching {
+                if vm.errorMessage.isEmpty {
+                    VStack {
+                        List {
+                            ForEach(vm.repo.items, id: \.id) { coaster in
+                                NavigationLink(destination: CoasterDetailsView(id: coaster.id)) {
+                                    CoasterItemView(coaster: coaster)
+                                }
                             }
                         }
+                        .listStyle(PlainListStyle())
                     }
+                    .navigationTitle("Coasters")
+                } else {
+                    Text(vm.errorMessage)
                 }
+                
+            } else {
+                ProgressView()
             }
-            .navigationTitle("Coasters")
+            
         }
-
-        
-       
     }
 }
 
 struct Coasters_Preview: PreviewProvider {
     static var previews: some View {
-        CoastersView(userId: "yJp8qLL65QV02RgEzfm794bX21V2")
+        CoastersView(userId: PlistReader().getPlistProperty(withName: "keys", withValue: "testUserId")!)
     }
 }

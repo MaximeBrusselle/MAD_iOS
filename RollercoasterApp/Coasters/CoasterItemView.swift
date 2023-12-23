@@ -14,43 +14,35 @@ struct CoasterItemView: View {
     init(coaster: Coaster) {
         self.coaster = coaster
         self.vm = CoasterItemViewModel(coaster: coaster)
+
     }
     
     var body: some View {
         HStack {
-            Text(coaster.name)
-            if vm.likeId.isEmpty {
-                likeButton(action: vm.like, color: .blue, label: "Add")
-            } else {
-                likeButton(action: vm.removelike, color: .red, label: "Remove")
+            ImageView(id: coaster.id, size: "280x210", width: 160, height: 160)
+            VStack(alignment: .leading) {
+                Text(coaster.name)
+                    .font(.title)
+                    .bold()
+                Text(coaster.park.name)
+                    .font(.callout)
+                Text(vm.coaster.rank != nil ? "Rank: \(coaster.rank!)" : "No rank yet")
+                    .font(.footnote)
+                Text(coaster.cleanedUpStatusString())
+                    .font(.footnote)
             }
-        }
-    }
-    
-    struct likeButton: View {
-        var action: () -> Void
-        var color: Color
-        var label: String
-        
-        var body: some View {
-            Button {
-                action()
-            } label: {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(width: 200, height: 40)
-                        .foregroundStyle(color)
-                    Text(label)
-                        .foregroundStyle(.white)
+            Spacer()
+            Image(systemName: $vm.liked.wrappedValue ? "heart.fill" : "heart")
+                .foregroundStyle($vm.liked.wrappedValue ? .red : .blue)
+                .onChange(of: $vm.liked.wrappedValue) {
+                    debugPrint("haha")
                 }
-            }
         }
-        
     }
 }
 
 struct CoasterItem_Preview: PreviewProvider {
     static var previews: some View {
-        CoasterItemView(coaster: Coaster(id: 1, name: "Test", park: CoastersPark(name: "Home"), status: CoastersStatus(name: "operating")))
+        CoasterItemView(coaster: Coaster(id: 1, name: "Test", park: CoastersPark(name: "Home"), status: CoastersStatus(name: "operating"), rank: 1))
     }
 }

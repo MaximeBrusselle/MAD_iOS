@@ -14,9 +14,11 @@ struct CoasterImage: Codable {
 }
 
 struct ImageRepo: Codable {
-    var hydraMember: [CoasterImage]
+    var items: [CoasterImage]
+    var amount: Int?
 
     enum CodingKeys: String, CodingKey {
-        case hydraMember = "hydra:member"
+        case items = "hydra:member"
+        case amount = "hydra:totalItems"
     }
 }

@@ -26,6 +26,10 @@ class RegisterViewModel: ObservableObject {
         
         
         Auth.auth().createUser(withEmail: email, password: password) {[weak self] result, error in
+            guard error == nil else {
+                self?.errorMessage = error!.localizedDescription
+                return
+            }
             guard let user = result?.user.uid else {
                 return
             }
@@ -44,7 +48,7 @@ class RegisterViewModel: ObservableObject {
     
     //https://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
     private func checkIfEmail(email str: String) -> Bool {
-        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailFormat = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: str)
     }
@@ -62,7 +66,7 @@ class RegisterViewModel: ObservableObject {
         }
         
         guard password.count >= 6 else {
-            self.errorMessage = "Password must be atleast 3 characters"
+            self.errorMessage = "Password must be atleast 6 characters"
             return false
         }
         

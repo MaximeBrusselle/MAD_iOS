@@ -17,7 +17,7 @@ struct MainView: View {
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
-                ProfileView()
+                ProfileView(userId: vm.currentUserId)
                     .tabItem {
                         Label("Profile", systemImage: "person.circle")
                     }

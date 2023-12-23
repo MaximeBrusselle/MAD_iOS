@@ -9,39 +9,63 @@ import Foundation
 import Alamofire
 
 class CoastersViewModel: ObservableObject {
-    init(){
-        fetchCoasters()
-    }
-    @Published var repo: CoastersRepo = .init(hydraMember: [])
+    @Published var repo: CoastersRepo = .init(items: [])
+    @Published var doneFetching = false
+    @Published var errorMessage = ""
     
-    func fetchCoasters(){
-        let apiKey = PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")
-        if apiKey == nil {
-            return
-        }
-        let url = "https://www.captaincoaster.com/api/coasters"
-        let headers: HTTPHeaders = [
-            "Authorization": apiKey!
-        ]
-        guard let url = URL(string: url) else {
-            return
-        }
-        
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: CoastersRepo.self) { response in
-            if(response.response?.statusCode == 404){
-                print("404")
-                return
+    func fetchCoasters(page: Int) {
+        let url = URL(string: "https://captaincoaster.com/api/coasters?page=\(page)")!
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/ld+json", forHTTPHeaderField: "accept")
+        request.addValue(PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")!, forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+
+            if error != nil {
+                self.errorMessage = error!.localizedDescription
+            } else if let response = response as? HTTPURLResponse {
+                switch response.statusCode {
+                case 200:
+
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                        let coasterRepo = try decoder.decode(CoastersRepo.self, from: data!)
+                        
+                        DispatchQueue.main.async {
+                            self.repo = coasterRepo
+                            self.doneFetching = true
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            self.errorMessage = "Error decoding JSON: \(error.localizedDescription)"
+                            self.doneFetching = true
+                        }
+
+                    }
+                case 401:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Authorization issue (401)"
+                        self.doneFetching = true
+                    }
+                case 404:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Resource not found (404)"
+                        self.doneFetching = true
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Unexpected response: \(response.statusCode)"
+                        self.doneFetching = true
+                    }
+                }
             }
-            guard let data = response.data else {
-                return
-            }
-            
-            do {
-                let res = try JSONDecoder().decode(CoastersRepo.self, from: data)
-                self.repo = res
-            } catch {
-                print(error)
-            }
         }
+
+        task.resume()
     }
 }

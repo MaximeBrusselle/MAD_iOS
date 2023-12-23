@@ -8,21 +8,40 @@
 import SwiftUI
 
 struct CoasterDetailsView: View {
-    @StateObject private var vm = CoasterDetailsViewModel(id: 1)
+    private let id: Int
+    @ObservedObject private var vm: CoasterDetailsViewModel
+    
+    init(id: Int) {
+        self.id = id
+        self.vm = CoasterDetailsViewModel(id: id)
+        vm.checkIfCoasterLiked()
+        vm.fetchCoaster()
+    }
     
     var body: some View {
-        if vm.coaster.name != nil {
-            Text(vm.coaster.name!)
+        if vm.doneFetching {
+            if vm.errorMessage.isEmpty {
+                VStack(spacing: 10) {
+                    Text("\(vm.coaster.id!): \(vm.coaster.name!)")
+                    Button {
+                        vm.toggleLike()
+                    } label: {
+                        Image(systemName: vm.liked ? "heart.fill" : "heart")
+                            .foregroundStyle(vm.liked ? .red : .blue)
+                    }
+                }
+            } else {
+                Text(vm.errorMessage)
+            }
         } else {
-            Text("Something went wrong")
+            ProgressView()
         }
-
     }
 }
 
 struct CoasterDetailsView_Preview: PreviewProvider {
     static var previews: some View {
-        CoasterDetailsView()
+        CoasterDetailsView(id: 300)
     }
 }
 

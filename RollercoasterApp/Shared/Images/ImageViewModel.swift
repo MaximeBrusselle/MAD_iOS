@@ -11,60 +11,79 @@ import Alamofire
 class ImageViewModel: ObservableObject {
     var id: Int
     var size: String
-    @Published var repo: ImageRepo = .init(hydraMember: [])
+    @Published var repo: ImageRepo = .init(items: [], amount: nil)
     @Published var imageURL = ""
-    @Published var isDataLoaded = false 
+    @Published var doneFetching = false
+    @Published var errorMessage = ""
     
     init(id: Int, size: String) {
         self.id = id
         self.size = size
-        fetchImage(coaster: 1)
     }
     
 
     
-    func fetchImage(coaster id: Int){
-        let apiKey = PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")
-        if apiKey == nil {
-            return
-        }
-        let url = "https://captaincoaster.com/api/images?page=1&coaster=1"
-        let headers: HTTPHeaders = [
-            "Authorization": apiKey!
-        ]
-        guard let url = URL(string: url) else {
-            return
-        }
-        
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: ImageRepo.self) { response in
-            if(response.response?.statusCode == 404){
-                print("404")
-                return
+    func fetchImage() {
+        let url = URL(string: "https://captaincoaster.com/api/images?page=1&coaster=\(self.id)")!
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/ld+json", forHTTPHeaderField: "accept")
+        request.addValue(PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")!, forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+
+            if error != nil {
+                self.errorMessage = error!.localizedDescription
+            } else if let response = response as? HTTPURLResponse {
+                switch response.statusCode {
+                case 200:
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                        let imageRepo = try decoder.decode(ImageRepo.self, from: data!)
+                        
+                        DispatchQueue.main.async {
+                            self.repo = imageRepo
+                            self.imageURL = self.getImageUrl(size: self.size)
+                            self.doneFetching = true
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            self.errorMessage = "Error decoding JSON: \(error.localizedDescription)"
+                            self.doneFetching = true
+                        }
+
+                    }
+                case 401:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Authorization issue (401)"
+                        self.doneFetching = true
+                    }
+                case 404:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Resource not found (404)"
+                        self.doneFetching = true
+                    }
+                default:
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Unexpected response: \(response.statusCode)"
+                        self.doneFetching = true
+                    }
+                }
             }
-            guard let data = response.data else {
-                return
-            }
-            
-            do {
-                let res = try JSONDecoder().decode(ImageRepo.self, from: data)
-                self.repo = res
-                self.imageURL = self.getImageUrl(size: self.size)
-                self.isDataLoaded = true
-                debugPrint(self.imageURL)
-                
-            } catch {
-                print(error)
-            }
         }
+
+        task.resume()
     }
     
     func getImageUrl(size: String) -> String {
-        let first = repo.hydraMember.first
-        
-        if first != nil {
-            return "https://pictures.captaincoaster.com/\(size)/\(first!.path!)"
+        if let _ = repo.amount, repo.amount != 0 {
+            return "https://pictures.captaincoaster.com/\(size)/\(repo.items.first!.path!)"
         }
         
-        return "https://ik.imagekit.io/demo/medium_cafe_B1iTdD0C.jpg"
+        return ""
     }
 }

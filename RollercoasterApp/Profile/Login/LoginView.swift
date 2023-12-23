@@ -14,8 +14,6 @@ struct LoginView: View {
             VStack {
                 HeaderView(title: "Coaster App", subtitle: "Your Favourite Coasters", bgColor: .orange, angle: 15)
                 
-                
-                
                 Form {
                     if !vm.errorMessage.isEmpty {
                         Text(vm.errorMessage)
