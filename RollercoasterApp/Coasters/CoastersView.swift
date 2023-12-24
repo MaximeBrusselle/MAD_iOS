@@ -14,7 +14,7 @@ struct CoastersView: View {
     init(userId: String) {
         self.userId = userId
         self.vm = CoastersViewModel()
-        vm.fetchCoasters(page: 7)
+        vm.fetchCoasters(page: 1)
     }
     
     var body: some View {

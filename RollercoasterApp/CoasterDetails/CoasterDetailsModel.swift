@@ -66,3 +66,34 @@ struct CoasterDetailStatus: Codable {
 struct CoasterDetailImage: Codable {
     var path: String?
 }
+
+extension CoasterDetail {
+    func getProperty(property str: String?, start: String = "") -> String {
+        guard let prop = str else {
+            return "Unknown"
+        }
+        
+        guard prop.contains("."), !start.isEmpty else {
+            return prop
+        }
+        
+        let components = prop
+            .replacingOccurrences(of: start, with: "")
+            .components(separatedBy: ".")
+
+        let cleanedString = components
+            .enumerated()
+            .map { $0.offset == 0 ? $0.element.capitalized : $0.element }
+            .joined(separator: " ")
+
+        return cleanedString
+    }
+
+    func convertToDate(from date: String) -> String {
+        //todo fix
+        guard date != "Unknown" else {
+            return date
+        }
+        return date
+    }
+}

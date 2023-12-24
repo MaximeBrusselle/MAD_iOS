@@ -21,6 +21,11 @@ class ImageViewModel: ObservableObject {
         self.size = size
     }
     
+    init(size: String){
+        self.id = 0
+        self.size = size
+    }
+    
 
     
     func fetchImage() {
@@ -47,7 +52,7 @@ class ImageViewModel: ObservableObject {
                         
                         DispatchQueue.main.async {
                             self.repo = imageRepo
-                            self.imageURL = self.getImageUrl(size: self.size)
+                            self.imageURL = self.getImageUrl()
                             self.doneFetching = true
                         }
                     } catch {
@@ -79,9 +84,15 @@ class ImageViewModel: ObservableObject {
         task.resume()
     }
     
-    func getImageUrl(size: String) -> String {
+    func getImageUrl(path: String?) {
+        self.imageURL = path != nil ? "https://pictures.captaincoaster.com/\(self.size)/\(path!)" : ""
+        self.doneFetching = true
+    }
+    
+    
+    func getImageUrl() -> String {
         if let _ = repo.amount, repo.amount != 0 {
-            return "https://pictures.captaincoaster.com/\(size)/\(repo.items.first!.path!)"
+            return "https://pictures.captaincoaster.com/\(self.size)/\(repo.items.first!.path!)"
         }
         
         return ""
