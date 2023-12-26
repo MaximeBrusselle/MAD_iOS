@@ -12,7 +12,7 @@ struct CoastersView: View {
     @ObservedObject var vm: CoastersViewModel
     @State var searchterm = ""
     @State var searched = false
-    @State private var selectedCoaster: Coaster?
+    @Environment(\.isSearching) var isSearching
     
     init(userId: String) {
         self.userId = userId
@@ -59,7 +59,8 @@ struct CoastersView: View {
             }
             .navigationTitle("Coasters")
             .searchable(text: $searchterm, prompt: "Search a coaster")
-            .onChange(of: searchterm ) {
+            .autocorrectionDisabled()
+            .onChange(of: searchterm) {
                 if searchterm.isEmpty, searched == true {
                     vm.searchCoasters(searchTerm: "")
                     searched = false

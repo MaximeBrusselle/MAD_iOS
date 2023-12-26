@@ -12,7 +12,15 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HeaderView(title: "Coaster App", subtitle: "Your Favourite Coasters", bgColor: .orange, angle: 15)
+                HeaderView(
+                    title: "Coaster App",
+                    subtitle: "Your Favourite Coasters",
+                    bgColor: LinearGradient(
+                        gradient: .init(colors: [Color(red: 239.0 / 255, green: 120.0 / 255, blue: 221.0 / 255), Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)]),
+                        startPoint: .init(x: 0.5, y: 0),
+                        endPoint: .init(x: 0.5, y: 0.6)
+                    ), 
+                    angle: 15)
                 
                 Form {
                     if !vm.errorMessage.isEmpty {
