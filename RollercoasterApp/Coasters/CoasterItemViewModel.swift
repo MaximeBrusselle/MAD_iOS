@@ -29,9 +29,11 @@ class CoasterItemViewModel: ObservableObject {
             .document(uId)
             .collection("coasters")
             .document("\(coaster.id)")
-            .getDocument { document, error in
+            .addSnapshotListener { document, error in
                 if document?.exists ?? false {
                     self.liked = true
+                } else {
+                    self.liked = false
                 }
             }
     }

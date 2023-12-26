@@ -20,12 +20,12 @@ struct LoginView: View {
                             .foregroundStyle(.red)
                     }
                     TextField("Email Address", text: $vm.email)
-                        .textFieldStyle(DefaultTextFieldStyle())
-                        .autocapitalization(.none)
+                        .textInputAutocapitalization(.none)
                         .autocorrectionDisabled()
                         .textContentType(.emailAddress)
-                    TextField("Password", text: $vm.password)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    SecureField("Password", text: $vm.password)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.none)
                         .textContentType(.password)
                     
                     AccountButton(text: "Log In", bgColor: .blue) {

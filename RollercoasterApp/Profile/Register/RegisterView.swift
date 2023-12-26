@@ -21,17 +21,17 @@ struct RegisterView: View {
                             .foregroundStyle(.red)
                     }
                     TextField("Full Name", text: $vm.name)
-                        .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
                         .textContentType(.name)
                     
                     TextField("Email Address", text: $vm.email)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                        .autocorrectionDisabled()
                         .autocapitalization(.none)
                         .textContentType(.emailAddress)
                     
-                    TextField("Password", text: $vm.password)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    SecureField("Password", text: $vm.password)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.none)
                         .textContentType(.password)
                         
                     AccountButton(text: "Create Account", bgColor: .green) {

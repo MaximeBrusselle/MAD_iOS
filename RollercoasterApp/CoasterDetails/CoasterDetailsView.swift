@@ -60,71 +60,83 @@ struct CoasterDetailsView: View {
     
     struct CoasterInformationView: View {
         let coaster: CoasterDetail
+        var generalInfo: [[String]]
+        var extraInfo: [[String]]
         
         init(coaster: CoasterDetail) {
             self.coaster = coaster
+            self.generalInfo = [
+                [
+                    "Manufacturer: ",
+                    coaster.getProperty(property: coaster.manufacturer?.name)
+                ],
+                [
+                    "Park: ",
+                    coaster.getProperty(property: coaster.park?.name),
+                    coaster.getProperty(property: coaster.park?.country?.name, start: "country.")
+                ],
+                [
+                    "Height: ",
+                    coaster.getProperty(property: coaster.height?.description)
+                ],
+                [
+                    "Length: ",
+                    coaster.getProperty(property: coaster.length?.description)
+                ],
+                [
+                    "Speed: ",
+                    coaster.getProperty(property: coaster.speed?.description)
+                ],
+                [
+                    "Inversions: ",
+                    coaster.getProperty(property: coaster.inversionsNumber?.description)
+                ],
+                [
+                    "Openingdate: ",
+                    coaster.convertToDate(from: coaster.getProperty(property: coaster.openingDate?.description))
+                ],
+                [
+                    "Status: ",
+                    coaster.getProperty(property: coaster.status?.name, start: "status.")
+                ],
+            ]
+            
+            if coaster.getProperty(property: coaster.status?.name, start: "status.") == "Closed definitely" {
+                self.generalInfo.append([
+                    "Closingdate:",
+                    coaster.convertToDate(from: coaster.getProperty(property: coaster.closingDate?.description))
+                ])
+            }
+            
+            self.extraInfo = [
+                [
+                    "Model: ",
+                    coaster.getProperty(property: coaster.model?.name)
+                ],
+                [
+                    "Material: ",
+                    coaster.getProperty(property: coaster.materialType?.name)
+                ],
+                [
+                    "Seating: ",
+                    coaster.getProperty(property: coaster.seatingType?.name)
+                ],
+                [
+                    "Restraint: ",
+                    coaster.getProperty(property: coaster.restraint?.name, start: "restraint.")
+                ],
+            ]
         }
         
         var body: some View {
             List {
                 CoasterDetailsSection(
                     title: "General Information",
-                    information: [
-                        [
-                            "Manufacturer: ",
-                            coaster.getProperty(property: coaster.manufacturer?.name)
-                        ],
-                        [
-                            "Park: ",
-                            coaster.getProperty(property: coaster.park?.name),
-                            coaster.getProperty(property: coaster.park?.country?.name, start: "country.")
-                        ],
-                        [
-                            "Height: ",
-                            coaster.getProperty(property: coaster.height?.description)
-                        ],
-                        [
-                            "Length: ",
-                            coaster.getProperty(property: coaster.length?.description)
-                        ],
-                        [
-                            "Speed: ",
-                            coaster.getProperty(property: coaster.speed?.description)
-                        ],
-                        [
-                            "Inversions: ",
-                            coaster.getProperty(property: coaster.inversionsNumber?.description)
-                        ],
-                        [
-                            "Openingdate: ",
-                            coaster.convertToDate(from: coaster.getProperty(property: coaster.openingDate?.description))
-                        ],
-                        [
-                            "Status: ",
-                            coaster.getProperty(property: coaster.status?.name, start: "status.")
-                        ],
-                    ]
+                    information: self.generalInfo
                 )
                 CoasterDetailsSection(
                     title: "Extra Information",
-                    information: [
-                        [
-                            "Model: ",
-                            coaster.getProperty(property: coaster.model?.name)
-                        ],
-                        [
-                            "Material: ",
-                            coaster.getProperty(property: coaster.materialType?.name)
-                        ],
-                        [
-                            "Seating: ",
-                            coaster.getProperty(property: coaster.seatingType?.name)
-                        ],
-                        [
-                            "Restraint: ",
-                            coaster.getProperty(property: coaster.restraint?.name, start: "restraint.")
-                        ],
-                    ]
+                    information: self.extraInfo
                 )
             }
             .background(.white)
@@ -160,7 +172,7 @@ struct CoasterDetailsView: View {
 struct CoasterDetailsView_Preview: PreviewProvider {
     @State static var liked = false
     static var previews: some View {
-        CoasterDetailsView(id: 300, liked: $liked)
+        CoasterDetailsView(id: 1, liked: $liked)
     }
 }
 

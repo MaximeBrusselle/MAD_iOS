@@ -9,9 +9,10 @@ import SwiftUI
 import FirebaseFirestoreSwift
 
 struct ProfileView: View {
-    @StateObject var vm = ProfileViewModel()
+    @StateObject var vm: ProfileViewModel
     @FirestoreQuery var items: [Coaster]
     init(userId: String){
+        self._vm = StateObject(wrappedValue: ProfileViewModel(userId: userId))
         self._items = FirestoreQuery(collectionPath: "users/\(userId)/coasters")
     }
     
@@ -19,20 +20,53 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             VStack {
-                VStack(alignment: .leading) {
-                    Text("Your liked coasters")
+                //User
+                if let user = vm.user {
+                    profileView(user: user)
+                    List(items) { item in
+                        Text("\(item.name)")
+                            .swipeActions {
+                                Button("Remove") {
+                                    vm.deleteItem(id: item.id)
+                                }
+                                .tint(.red)
+                            }
+                    }
                 }
-                List(items) { item in
-                    Text("\(item.name)")
-                }
+                
+                //Sign out
                 AccountButton(text: "Log Out", bgColor: .red, action: vm.logout)
                     .frame(width: 300, height: 50)
                 .padding()
                 Spacer()
             }
             .navigationTitle("Profile")
+            .padding(.horizontal)
         }
-
+    }
+    @ViewBuilder
+    func profileView(user: User) -> some View {
+        Image(systemName: "person.circle.fill")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .foregroundColor(.blue)
+            .frame(width: 125, height: 125)
+        Text(user.name)
+            .bold()
+            .font(.largeTitle)
+        Text(user.email)
+            .font(.title2)
+        Divider()
+        
+        HStack {
+            Text("Coasters ridden")
+                .bold()
+                .font(.title2)
+            Spacer()
+            Text(user.coastersRidden.description)
+                .bold()
+                .font(.title3)
+        }
     }
 }
 

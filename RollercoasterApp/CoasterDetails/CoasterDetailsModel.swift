@@ -92,8 +92,20 @@ extension CoasterDetail {
     func convertToDate(from date: String) -> String {
         //todo fix
         guard date != "Unknown" else {
-            return date
+            return "Unknown"
         }
-        return date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+       
+        guard let date = dateFormatter.date(from: date) else {
+            return "Unknown"
+        }
+        
+        let outputDateFormatter = DateFormatter()
+        outputDateFormatter.dateStyle = .short
+       
+        let formattedDate = outputDateFormatter.string(from: date)
+        return formattedDate
     }
 }

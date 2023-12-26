@@ -29,7 +29,6 @@ class CoastersViewModel: ObservableObject {
             } else if let response = response as? HTTPURLResponse {
                 switch response.statusCode {
                 case 200:
-
                     do {
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -45,7 +44,6 @@ class CoastersViewModel: ObservableObject {
                             self.errorMessage = "Error decoding JSON: \(error.localizedDescription)"
                             self.doneFetching = true
                         }
-
                     }
                 case 401:
                     DispatchQueue.main.async {
