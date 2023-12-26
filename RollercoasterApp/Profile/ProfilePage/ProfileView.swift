@@ -22,7 +22,7 @@ struct ProfileView: View {
             VStack {
                 //User
                 if let user = vm.user {
-                    profileView(user: user)
+                    profileInfo(user: user)
                     List(items) { item in
                         Text("\(item.name)")
                             .swipeActions {
@@ -45,7 +45,7 @@ struct ProfileView: View {
         }
     }
     @ViewBuilder
-    func profileView(user: User) -> some View {
+    func profileInfo(user: User) -> some View {
         Image(systemName: "person.circle.fill")
             .resizable()
             .aspectRatio(contentMode: .fit)

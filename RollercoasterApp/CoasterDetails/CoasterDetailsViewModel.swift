@@ -15,6 +15,7 @@ class CoasterDetailsViewModel: ObservableObject {
     @Published var coaster = CoasterDetail()
     @Published var doneFetching = false
     @Published var errorMessage = ""
+    private var cancellables: Set<AnyCancellable> = []
     
     init(id: Int){
         self.id = id
@@ -29,51 +30,34 @@ class CoasterDetailsViewModel: ObservableObject {
         request.addValue("application/ld+json", forHTTPHeaderField: "accept")
         request.addValue(PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")!, forHTTPHeaderField: "Authorization")
 
-        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
-            guard let self = self else { return }
-
-            if error != nil {
-                self.errorMessage = error!.localizedDescription
-            } else if let response = response as? HTTPURLResponse {
-                switch response.statusCode {
-                case 200:
-                    do {
-                        let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                        let coasterDetail = try decoder.decode(CoasterDetail.self, from: data!)
-                        
-                        DispatchQueue.main.async {
-                            self.coaster = coasterDetail
-                            self.doneFetching = true
-                        }
-                    } catch {
-                        DispatchQueue.main.async {
-                            self.errorMessage = "Error decoding JSON: \(error.localizedDescription)"
-                            self.doneFetching = true
-                        }
-
-                    }
-                case 401:
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Authorization issue (401)"
-                        self.doneFetching = true
-                    }
-                case 404:
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Resource not found (404)"
-                        self.doneFetching = true
-                    }
-                default:
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Unexpected response: \(response.statusCode)"
-                        self.doneFetching = true
-                    }
+        URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw URLError(.badServerResponse)
                 }
+                guard 200..<300 ~= httpResponse.statusCode else {
+                    throw URLError(.badServerResponse)
+                }
+                return data
             }
-        }
-
-        task.resume()
+            .decode(type: CoasterDetail.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    self.doneFetching = true
+                    break // Do nothing on success
+                case .failure(let error):
+                    self.errorMessage = "Error: \(error.localizedDescription)"
+                    self.doneFetching = true
+                }
+            }, receiveValue: { [weak self] detail in
+                guard let self = self else { return }
+                self.coaster = detail
+                self.doneFetching = true
+            })
+            .store(in: &cancellables)
     }
     
     func toggleLike(liked: Bool) -> Bool {

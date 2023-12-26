@@ -23,12 +23,14 @@ class ProfileViewModel: ObservableObject {
         db.collection("users")
             .document(self.userId)
             .addSnapshotListener { [weak self] snapshot, error in
+                guard let self = self else { return }
+                
                 guard let data = snapshot?.data(), error == nil else {
                     return
                 }
                 
                 DispatchQueue.main.async {
-                    self?.user = User(
+                    self.user = User(
                         id: data["id"] as? String ?? "",
                         name: data["name"] as? String ?? "",
                         email: data["email"] as? String ?? "",

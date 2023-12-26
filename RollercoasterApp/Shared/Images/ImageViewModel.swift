@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import Alamofire
+import Combine
+
 
 class ImageViewModel: ObservableObject {
     var id: Int
@@ -15,6 +16,7 @@ class ImageViewModel: ObservableObject {
     @Published var imageURL = ""
     @Published var doneFetching = false
     @Published var errorMessage = ""
+    private var cancellables: Set<AnyCancellable> = []
     
     init(id: Int, size: String) {
         self.id = id
@@ -36,52 +38,34 @@ class ImageViewModel: ObservableObject {
         request.addValue("application/ld+json", forHTTPHeaderField: "accept")
         request.addValue(PlistReader().getPlistProperty(withName: "keys", withValue: "CaptainCoasterApiKey")!, forHTTPHeaderField: "Authorization")
 
-        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
-            guard let self = self else { return }
-
-            if error != nil {
-                self.errorMessage = error!.localizedDescription
-            } else if let response = response as? HTTPURLResponse {
-                switch response.statusCode {
-                case 200:
-                    do {
-                        let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                        let imageRepo = try decoder.decode(ImageRepo.self, from: data!)
-                        
-                        DispatchQueue.main.async {
-                            self.repo = imageRepo
-                            self.imageURL = self.getImageUrl()
-                            self.doneFetching = true
-                        }
-                    } catch {
-                        DispatchQueue.main.async {
-                            self.errorMessage = "Error decoding JSON: \(error.localizedDescription)"
-                            self.doneFetching = true
-                        }
-
-                    }
-                case 401:
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Authorization issue (401)"
-                        self.doneFetching = true
-                    }
-                case 404:
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Resource not found (404)"
-                        self.doneFetching = true
-                    }
-                default:
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Unexpected response: \(response.statusCode)"
-                        self.doneFetching = true
-                    }
+        URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw URLError(.badServerResponse)
                 }
+                guard 200..<300 ~= httpResponse.statusCode else {
+                    throw URLError(.badServerResponse)
+                }
+                return data
             }
-        }
-
-        task.resume()
+            .decode(type: ImageRepo.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.errorMessage = "Error: \(error.localizedDescription)"
+                    self.doneFetching = true
+                }
+            }, receiveValue: { [weak self] imageRepo in
+                guard let self = self else { return }
+                self.repo = imageRepo
+                self.imageURL = self.getImageUrl()
+                self.doneFetching = true
+            })
+            .store(in: &cancellables)
     }
     
     func getImageUrl(path: String?) {
@@ -91,10 +75,9 @@ class ImageViewModel: ObservableObject {
     
     
     func getImageUrl() -> String {
-        if let _ = repo.amount, repo.amount != 0 {
-            return "https://pictures.captaincoaster.com/\(self.size)/\(repo.items.first!.path!)"
+        guard let amount = repo.amount, amount != 0 else {
+            return ""
         }
-        
-        return ""
+        return "https://pictures.captaincoaster.com/\(self.size)/\(repo.items.first!.path!)"
     }
 }

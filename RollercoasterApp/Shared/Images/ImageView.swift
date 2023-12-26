@@ -36,31 +36,39 @@ struct ImageView: View {
     }
     
     var body: some View {
-        if vm.doneFetching {
-            AsyncImage(url: vm.imageURL.isEmpty ? nil : URL(string: vm.imageURL)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: width, height: height)
-            } placeholder: {
-                ZStack {
-                    Rectangle()
+        VStack {
+            if vm.doneFetching {
+                AsyncImage(url: vm.imageURL.isEmpty ? nil : URL(string: vm.imageURL)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: width, height: height)
-                        .foregroundStyle(.gray)
-                    Text("No Image Found")
-                        .foregroundStyle(.white)
+                } placeholder: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: width, height: height)
+                            .foregroundStyle(.gray)
+                        Text("No Image Found")
+                            .foregroundStyle(.white)
+                    }
+                    
                 }
-                
-            }
-       } else {
-           ProgressView()
-       }
+           } else {
+               ZStack {
+                   Rectangle()
+                       .frame(width: width, height: height)
+                       .foregroundStyle(.gray)
+                   Text("Loading")
+               }
+
+           }
+        }
     }
 }
 
 #Preview {
     VStack {
-        ImageView(id: 1, size: "280x210", width: 140, height: 120)
-        ImageView(size: "280x210", width: 140, height: 120, path: "872e0fc8-7e29-4093-95d1-36db6f2a0340.jpeg")
+        ImageView(id: 1, size: "280x210", width: 160, height: 120)
+        ImageView(size: "280x210", width: 160, height: 120, path: "872e0fc8-7e29-4093-95d1-36db6f2a0340.jpeg")
     }
 }

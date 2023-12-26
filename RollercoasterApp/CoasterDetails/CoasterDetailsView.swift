@@ -10,19 +10,23 @@ import SwiftUI
 struct CoasterDetailsView: View {
     private let id: Int
     @Binding private var liked: Bool
+    @Binding private var isPressed: Bool
     @ObservedObject private var vm: CoasterDetailsViewModel
     
-    init(id: Int, liked: Binding<Bool>) {
+    init(id: Int, liked: Binding<Bool>, isPressed: Binding<Bool>) {
         self.id = id
         self._liked = liked
+        self._isPressed = isPressed
         self.vm = CoasterDetailsViewModel(id: id)
-        vm.fetchCoaster()
+        if isPressed.wrappedValue {
+            vm.fetchCoaster()
+        }
     }
     
     var body: some View {
-        if vm.doneFetching {
-            if vm.errorMessage.isEmpty {
-                VStack {
+        VStack {
+            if vm.doneFetching {
+                if vm.errorMessage.isEmpty {
                     ZStack {
                         ImageView(size: "280x210", width: 350, height: 262.5, path: vm.coaster.mainImage?.path)
                         Button {
@@ -48,13 +52,19 @@ struct CoasterDetailsView: View {
                     Divider()
                     CoasterInformationView(coaster: vm.coaster)
                     Spacer()
+                } else {
+                    Text(vm.errorMessage)
                 }
-                .padding(.horizontal)
             } else {
-                Text(vm.errorMessage)
+                ProgressView()
             }
-        } else {
-            ProgressView()
+        }
+        .padding(.horizontal)
+        .onAppear {
+            isPressed = true
+        }
+        .onDisappear {
+            isPressed = false
         }
     }
     
@@ -171,8 +181,10 @@ struct CoasterDetailsView: View {
 
 struct CoasterDetailsView_Preview: PreviewProvider {
     @State static var liked = false
+    @State static var isPressed = true
+
     static var previews: some View {
-        CoasterDetailsView(id: 1, liked: $liked)
+        CoasterDetailsView(id: 1, liked: $liked, isPressed: $isPressed)
     }
 }
 

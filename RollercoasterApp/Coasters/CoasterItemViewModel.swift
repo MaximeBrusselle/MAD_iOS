@@ -29,11 +29,15 @@ class CoasterItemViewModel: ObservableObject {
             .document(uId)
             .collection("coasters")
             .document("\(coaster.id)")
-            .addSnapshotListener { document, error in
-                if document?.exists ?? false {
-                    self.liked = true
-                } else {
-                    self.liked = false
+            .addSnapshotListener { [weak self] document, error in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    if document?.exists ?? false {
+                        self.liked = true
+                    } else {
+                        self.liked = false
+                    }
                 }
             }
     }

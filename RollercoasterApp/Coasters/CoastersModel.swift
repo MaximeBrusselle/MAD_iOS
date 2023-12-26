@@ -25,9 +25,11 @@ struct CoastersStatus: Codable {
 
 struct CoastersRepo: Codable {
     var items: [Coaster]
+    var total: Int?
 
     enum CodingKeys: String, CodingKey {
         case items = "hydra:member"
+        case total = "hydra:totalItems"
     }
 }
 

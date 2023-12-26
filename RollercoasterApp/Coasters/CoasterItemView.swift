@@ -10,6 +10,7 @@ import SwiftUI
 struct CoasterItemView: View {
     @State private var coaster: Coaster
     @ObservedObject var vm: CoasterItemViewModel
+    @State private var isPressed = false
     
     init(coaster: Coaster) {
         self.coaster = coaster
@@ -17,9 +18,9 @@ struct CoasterItemView: View {
     }
     
     var body: some View {
-        NavigationLink(destination: CoasterDetailsView(id: coaster.id, liked: $vm.liked)) {
+        NavigationLink(destination: CoasterDetailsView(id: coaster.id, liked: $vm.liked, isPressed: $isPressed)) {
             HStack {
-                ImageView(id: coaster.id, size: "280x210", width: 160, height: 160)
+                ImageView(id: coaster.id, size: "280x210", width: 160, height: 120)
                 VStack(alignment: .leading) {
                     Text(coaster.name)
                         .font(.title)
