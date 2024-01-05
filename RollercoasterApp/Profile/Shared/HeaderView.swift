@@ -10,8 +10,12 @@ import SwiftUI
 struct HeaderView: View {
     let title: String
     let subtitle: String
-    var bgColor: LinearGradient
-    var angle: Double
+    let bgColor: LinearGradient
+    let angle: Double
+    let padding: Double
+    let offset: Double
+    let width: Double
+    let height: Double
     
     var body: some View {
         ZStack {
@@ -28,18 +32,26 @@ struct HeaderView: View {
                     .font(.system(size: 25))
                     .foregroundColor(.white)
             }
-            .padding(.top, 80)
-            
+            .padding(.top, padding)
         }
-        .frame(width: UIScreen.main.bounds.width * 2, height: 350)
-        .offset(y: -150)
+        .frame(width: width, height: height)
+        .offset(y: offset)
     }
 }
 
 #Preview {
-    HeaderView(title: "Title", subtitle: "Subtitle", bgColor: LinearGradient(
+    HeaderView(
+        title: "Title",
+        subtitle: "Subtitle",
+        bgColor: LinearGradient(
         gradient: .init(colors: [Color(red: 239.0 / 255, green: 120.0 / 255, blue: 221.0 / 255), Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)]),
         startPoint: .init(x: 0.5, y: 0),
         endPoint: .init(x: 0.5, y: 0.6)
-      ), angle: 15)
+        ), 
+        angle: 15,
+        padding: 80,
+        offset: -150,
+        width: UIScreen.main.bounds.width * 2, 
+        height: 350
+    )
 }

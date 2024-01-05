@@ -80,6 +80,7 @@
 		EF035C322B339E5C00D3E4BF /* CoastersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastersModel.swift; sourceTree = "<group>"; };
 		EF035C342B33A80C00D3E4BF /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		EF035C362B33A8D500D3E4BF /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
+		EF810CF62B477CBE001C1CD9 /* KEYS_README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = KEYS_README.md; sourceTree = "<group>"; };
 		EF9A84202B35DAC00069A413 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF9A842A2B35E1240069A413 /* CoasterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoasterItemView.swift; sourceTree = "<group>"; };
 		EF9A842D2B35E2770069A413 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -153,7 +154,7 @@
 				EF035BF62B3375ED00D3E4BF /* Preview Content */,
 				EF035BF42B3375ED00D3E4BF /* Assets.xcassets */,
 				EF9A842C2B35E2690069A413 /* Profile */,
-				EF9A84292B35E0030069A413 /* Other */,
+				EF9A84292B35E0030069A413 /* Keys */,
 				EF035C2D2B339DAF00D3E4BF /* Coasters */,
 				EF035C1E2B337BF500D3E4BF /* CoasterDetails */,
 				EF035C1A2B337A6E00D3E4BF /* Shared */,
@@ -220,13 +221,14 @@
 			path = Coasters;
 			sourceTree = "<group>";
 		};
-		EF9A84292B35E0030069A413 /* Other */ = {
+		EF9A84292B35E0030069A413 /* Keys */ = {
 			isa = PBXGroup;
 			children = (
 				EF035C342B33A80C00D3E4BF /* keys.plist */,
 				EF9A84202B35DAC00069A413 /* GoogleService-Info.plist */,
+				EF810CF62B477CBE001C1CD9 /* KEYS_README.md */,
 			);
-			path = Other;
+			path = Keys;
 			sourceTree = "<group>";
 		};
 		EF9A842C2B35E2690069A413 /* Profile */ = {

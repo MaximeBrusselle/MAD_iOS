@@ -12,6 +12,8 @@ struct CoasterDetailsView: View {
     @Binding private var liked: Bool
     @Binding private var isPressed: Bool
     @ObservedObject private var vm: CoasterDetailsViewModel
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     init(id: Int, liked: Binding<Bool>, isPressed: Binding<Bool>) {
         self.id = id
@@ -27,31 +29,61 @@ struct CoasterDetailsView: View {
         VStack {
             if vm.doneFetching {
                 if vm.errorMessage.isEmpty {
-                    ZStack {
-                        ImageView(size: "280x210", width: 350, height: 262.5, path: vm.coaster.mainImage?.path)
-                        Button {
-                            liked = vm.toggleLike(liked: liked)
-                        } label: {
-                            ZStack {
-                                Image(systemName: "heart.fill")
-                                    .font(.system(size: 60))
-                                    .foregroundStyle(liked ? .pink : .white)
-                                Image(systemName: "heart")
-                                    .font(.system(size: 60))
-                                    .foregroundStyle(.black)
+                    if horizontalSizeClass == .compact, verticalSizeClass == .regular {
+                        ZStack {
+                            ImageView(size: "280x210", width: 350, height: 262.5, path: vm.coaster.mainImage?.path)
+                            Button {
+                                liked = vm.toggleLike(liked: liked)
+                            } label: {
+                                ZStack {
+                                    Image(systemName: "heart.fill")
+                                        .font(.system(size: 60))
+                                        .foregroundStyle(liked ? .pink : .white)
+                                    Image(systemName: "heart")
+                                        .font(.system(size: 60))
+                                        .foregroundStyle(.black)
+                                }
                             }
+                            .offset(x: 160, y: 120)
                         }
-                        .offset(x: 160, y: 120)
+                        Text(vm.coaster.name!)
+                            .bold()
+                            .font(.system(size: 60))
+                        VStack {
+                            // this for some reason makes the divider be better tucked under title
+                        }
+                        Divider()
+                        CoasterInformationView(coaster: vm.coaster)
+                        Spacer()
+                    } else {
+                        HStack {
+                            VStack {
+                                ZStack {
+                                    ImageView(size: "280x210", width: 365, height: 240, path: vm.coaster.mainImage?.path)
+                                    Button {
+                                        liked = vm.toggleLike(liked: liked)
+                                    } label: {
+                                        ZStack {
+                                            Image(systemName: "heart.fill")
+                                                .font(.system(size: 60))
+                                                .foregroundStyle(liked ? .pink : .white)
+                                            Image(systemName: "heart")
+                                                .font(.system(size: 60))
+                                                .foregroundStyle(.black)
+                                        }
+                                    }
+                                    .offset(x: 160, y: 120)
+                                }
+                                Text(vm.coaster.name!)
+                                    .bold()
+                                    .font(.system(size: 60))
+                                    .padding(.top, -15)
+                            }
+                            
+                            CoasterInformationView(coaster: vm.coaster)
+                        }
                     }
-                    Text(vm.coaster.name!)
-                        .bold()
-                        .font(.system(size: 60))
-                    VStack {
-                        // this for some reason makes the divider be better tucked under title
-                    }
-                    Divider()
-                    CoasterInformationView(coaster: vm.coaster)
-                    Spacer()
+                    
                 } else {
                     Text(vm.errorMessage)
                 }
