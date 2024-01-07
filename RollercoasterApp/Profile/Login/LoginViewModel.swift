@@ -22,7 +22,13 @@ class LoginViewModel: ObservableObject {
             return
         }
         
-        Auth.auth().signIn(withEmail: email, password: password)
+        Auth.auth().signIn(withEmail: email, password: password) {[weak self] result, error in
+            guard error == nil else {
+                self?.errorMessage = "Incorrect email or password, please try again."
+                return
+            }
+            return
+        }
     }
     
     //https://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
